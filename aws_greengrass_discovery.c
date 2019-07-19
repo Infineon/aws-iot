@@ -58,7 +58,6 @@
  *               Variable Definitions
  ******************************************************/
 
-//static uint16_t received_data_length;
 static uint8_t json_object_counter = 0;
 static uint8_t gg_group_found;
 cy_linked_list_t* group_list = NULL;
@@ -341,86 +340,6 @@ static void greengrass_initialize_connection_node( char* host_address, uint16_t 
     cy_linked_list_insert_node_at_rear( connection_list, node );
     return;
 }
-
-#if 0
-static void free_conn_info( wiced_aws_greengrass_core_connection_t* node )
-{
-    wiced_aws_greengrass_core_connection_info_t* info = NULL;
-    if( !node )
-    {
-        return;
-    }
-
-    info = &node->info;
-
-    free(info->port);
-    free(info->ip_address);
-    free(info->metadata);
-
-    info->port          = NULL;
-    info->ip_address  = NULL;
-    info->metadata      = NULL;
-}
-
-static void free_core( wiced_aws_greengrass_core_t* core )
-{
-    uint32_t i = 0;
-    uint32_t count = 0;
-    cy_linked_list_node_t* node = NULL;
-    wiced_aws_greengrass_core_info_t* info = NULL;
-    if( !core )
-    {
-        return;
-    }
-
-    info = &core->info;
-
-    free(info->group_id);
-    free(info->thing_arn);
-    free(info->root_ca_certificate);
-
-    info->root_ca_length        = 0;
-    info->group_id              = NULL;
-    info->thing_arn             = NULL;
-    info->root_ca_certificate   = NULL;
-
-    count = info->connections.count;
-
-    for( i = 0; i < count; i++ )
-    {
-        node = NULL;
-        cy_linked_list_remove_node_from_front(&info->connections, &node);
-        if( node )
-        {
-            free_conn_info( (wiced_aws_greengrass_core_connection_t*)node->data );
-            free(node->data);
-        }
-    }
-
-    cy_linked_list_deinit(&info->connections);
-}
-
-static void free_group_list( void )
-{
-    uint32_t i = 0;
-    cy_linked_list_node_t* node = NULL;
-    uint32_t count = group_list->count;
-
-    for( i = 0; i < count; i++ )
-    {
-        node = NULL;
-        cy_linked_list_remove_node_from_front(group_list, &node);
-        if( node )
-        {
-            free_core( node->data );
-            free(node->data);
-        }
-    }
-
-    cy_linked_list_deinit(group_list);
-    free(group_list);
-}
-#endif
 
 cy_rslt_t json_callback_for_discovery_payload (cy_JSON_object_t* json_object )
 {

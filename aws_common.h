@@ -52,15 +52,15 @@ extern "C" {
 
 #define AWS_GG_HTTPS_SERVER_PORT              (8443)
 
-#define GG_GROUP_ID                                 "GGGroupId"
-#define GG_GROUP_KEY                                "GGGroups"
-#define GG_HOST_ADDRESS                             "HostAddress"
-#define GG_PORT                                     "PortNumber"
-#define GG_METADATA                                 "Metadata"
-#define GG_ROOT_CAS                                 "CAs"
-#define GG_CORE_THING_ARN                           "thingArn"
-#define GG_BEGIN_CERTIFICATE                        "-----BEGIN CERTIFICATE-----"
-#define GG_REQUEST_PROTOCOL                         "https://"
+#define GG_GROUP_ID                           "GGGroupId"
+#define GG_GROUP_KEY                          "GGGroups"
+#define GG_HOST_ADDRESS                       "HostAddress"
+#define GG_PORT                               "PortNumber"
+#define GG_METADATA                           "Metadata"
+#define GG_ROOT_CAS                           "CAs"
+#define GG_CORE_THING_ARN                     "thingArn"
+#define GG_BEGIN_CERTIFICATE                  "-----BEGIN CERTIFICATE-----"
+#define GG_REQUEST_PROTOCOL                   "https://"
 
 #define verify_aws_type(aws, type)   ( (aws->transport == type) ? 1 : 0 )
 
@@ -85,10 +85,10 @@ extern "C" {
 
 typedef enum
 {
-    AWS_TRANSPORT_MQTT_NATIVE = 0,                /**< MQTT-native i.e. MQTT over TCP sockets */
-    AWS_TRANSPORT_MQTT_WEBSOCKET,                 /**< MQTT over Websockets */
-    AWS_TRANSPORT_RESTFUL_HTTPS,                  /**< AWS RESTful HTTPS APIs */
-    AWS_TRANSPORT_INVALID,                        /**< Invalid transport type */
+    AWS_TRANSPORT_MQTT_NATIVE = 0,        /**< MQTT-native i.e. MQTT over TCP sockets */
+    AWS_TRANSPORT_MQTT_WEBSOCKET,         /**< MQTT over Websockets */
+    AWS_TRANSPORT_RESTFUL_HTTPS,          /**< AWS RESTful HTTPS APIs */
+    AWS_TRANSPORT_INVALID,                /**< Invalid transport type */
 } aws_iot_transport_type_t;
 
 /**
@@ -96,10 +96,10 @@ typedef enum
  */
 typedef enum
 {
-    AWS_QOS_ATMOST_ONCE    = 0x00,                /**< QoS level 0 */
-    AWS_QOS_ATLEAST_ONCE   = 0x01,                /**< QoS level 1 */
-    AWS_QOS_EXACTLY_ONCE   = 0x02,                /**< QoS level 2 */
-    AWS_QOS_INVALID        = 0x80,                /**< Invalid QoS level */
+    AWS_QOS_ATMOST_ONCE    = 0x00,        /**< QoS level 0 */
+    AWS_QOS_ATLEAST_ONCE   = 0x01,        /**< QoS level 1 */
+    AWS_QOS_EXACTLY_ONCE   = 0x02,        /**< QoS level 2 */
+    AWS_QOS_INVALID        = 0x80,        /**< Invalid QoS level */
 } aws_iot_qos_level_t;
 
 /**
@@ -107,12 +107,12 @@ typedef enum
  */
 typedef enum
 {
-    AWS_EVENT_CONNECTED,                          /**< The connection has been accepted by remote */
-    AWS_EVENT_DISCONNECTED,                       /**< Disconnection received from peer or some other network failure */
-    AWS_EVENT_PUBLISHED ,                         /**< Publication event; Either accepted by remote( received an acknowledgment ) or timed-out */
-    AWS_EVENT_SUBSCRIBED,                         /**< Subscription event; Either acknowledged by remote or timed-out */
-    AWS_EVENT_UNSUBSCRIBED,                       /**< Unsubscription event; acknowledged by remote or timed-out */
-    AWS_EVENT_PAYLOAD_RECEIVED,                   /**< Data received event */
+    AWS_EVENT_CONNECTED,                  /**< The connection has been accepted by remote */
+    AWS_EVENT_DISCONNECTED,               /**< Disconnection received from peer or some other network failure */
+    AWS_EVENT_PUBLISHED ,                 /**< Publication event; Either accepted by remote( received an acknowledgment ) or timed-out */
+    AWS_EVENT_SUBSCRIBED,                 /**< Subscription event; Either acknowledged by remote or timed-out */
+    AWS_EVENT_UNSUBSCRIBED,               /**< Unsubscription event; acknowledged by remote or timed-out */
+    AWS_EVENT_PAYLOAD_RECEIVED,           /**< Data received event */
 } aws_iot_event_type_t;
 
 
@@ -125,9 +125,9 @@ typedef enum
  */
 typedef struct
 {
-    char*                                       metadata;               /**< Any metadata associated with this Connection - Example - Interface name etc. */
-    char*                                       ip_address;             /**< IP-Address of the Core */
-    char*                                       port;                   /**< Port number of the Core */
+    char*    metadata;               /**< Any metadata associated with this Connection - Example - Interface name etc. */
+    char*    ip_address;             /**< IP-Address of the Core */
+    char*    port;                   /**< Port number of the Core */
 } aws_greengrass_core_connection_info_t;
 
 /**
@@ -146,11 +146,11 @@ typedef struct
  */
 typedef struct
 {
-    char*                                       group_id;               /**< Group-ID */
-    char*                                       thing_arn;              /**< Amazon resource name of the'Core' device of this Group */
-    char*                                       root_ca_certificate;    /**< Root CA certificate for this 'Core' */
-    uint16_t                                    root_ca_length;         /**< Length of the certificate */
-    cy_linked_list_t                            connections;            /**< A linked-list to store all Connection endpoints( @ref wiced_aws_greengrass_core_connection_t ) available for this core.For example: A core can have multiple network Interfaces. */
+    char*            group_id;               /**< Group-ID */
+    char*            thing_arn;              /**< Amazon resource name of the'Core' device of this Group */
+    char*            root_ca_certificate;    /**< Root CA certificate for this 'Core' */
+    uint16_t         root_ca_length;         /**< Length of the certificate */
+    cy_linked_list_t connections;            /**< A linked-list to store all Connection endpoints( @ref wiced_aws_greengrass_core_connection_t ) available for this core.For example: A core can have multiple network Interfaces. */
 } aws_greengrass_core_info_t;
 
 /**
@@ -159,8 +159,8 @@ typedef struct
 
 typedef struct
 {
-    aws_greengrass_core_info_t            info;
-    cy_linked_list_node_t                 node;
+    aws_greengrass_core_info_t  info;
+    cy_linked_list_node_t       node;
 } aws_greengrass_core_t;
 
 /** @} */
@@ -233,32 +233,32 @@ typedef struct
 
 typedef struct
 {
-    cy_rslt_t                                   status;
-    uint8_t*                                    data;
-    uint32_t                                    data_length;
-    uint8_t*                                    topic;
-    uint32_t                                    topic_length;
+    cy_rslt_t    status;
+    uint8_t*     data;
+    uint32_t     data_length;
+    uint8_t*     topic;
+    uint32_t     topic_length;
 } aws_iot_callback_message_t;
 
 typedef union
 {
-    aws_iot_callback_connection_data_t        connection;
-    aws_iot_callback_disconnection_data_t     disconnection;
-    aws_iot_callback_publish_data_t           publish;
-    aws_iot_callback_subscribe_data_t         subscribe;
-    aws_iot_callback_unsubscribe_data_t       unsubscribe;
-    aws_iot_callback_message_t                message;
+    aws_iot_callback_connection_data_t    connection;
+    aws_iot_callback_disconnection_data_t disconnection;
+    aws_iot_callback_publish_data_t       publish;
+    aws_iot_callback_subscribe_data_t     subscribe;
+    aws_iot_callback_unsubscribe_data_t   unsubscribe;
+    aws_iot_callback_message_t            message;
 } wiced_aws_callback_data_t;
 
 typedef struct aws_connect_params_s
 {
-    uint16_t    keep_alive;                                     /* Indicates keep alive interval to Broker */
-    uint8_t     clean_session;                                  /* Indicates if the session to be cleanly started */
-    uint8_t*    username;                                       /* User name to connect to Broker */
-    uint8_t*    password;                                       /* Password to connect to Broker */
-    uint8_t*    alpn_string;                                    /* If trying to connect with port 443 to AWS, It is mandatory to pass ALPN extension */
+    uint16_t    keep_alive;               /* Indicates keep alive interval to Broker */
+    uint8_t     clean_session;            /* Indicates if the session to be cleanly started */
+    uint8_t*    username;                 /* User name to connect to Broker */
+    uint8_t*    password;                 /* Password to connect to Broker */
+    uint8_t*    alpn_string;              /* If trying to connect with port 443 to AWS, It is mandatory to pass ALPN extension */
     uint8_t*    peer_cn;
-    uint8_t*    client_id;                                      /* Application must pass the client ID information */
+    uint8_t*    client_id;                /* Application must pass the client ID information */
 } aws_connect_params;
 
 typedef struct aws_publish_params_s
