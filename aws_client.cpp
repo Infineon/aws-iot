@@ -139,6 +139,7 @@ cy_rslt_t AWSIoTClient::connect(AWSIoTEndpoint* ep, aws_connect_params conn_para
         data.clientID.cstring = (char*) AWSIoTClient::thing_name;
         data.username.cstring = (char*) conn_params.username;
         data.password.cstring = (char*) conn_params.password;
+        data.keepAliveInterval = conn_params.keep_alive;
 
         AWS_LIBRARY_DEBUG(("Send MQTT connect frame \n"));
         if ((rc = mqtt_obj->connect(data)) != 0) {
@@ -155,6 +156,13 @@ cy_rslt_t AWSIoTClient::connect(AWSIoTEndpoint* ep, aws_connect_params conn_para
 cy_rslt_t AWSIoTClient::disconnect(AWSIoTEndpoint* ep)
 {
     int rc = 0;
+
+    if( mqtt_obj == NULL )
+    {
+        AWS_LIBRARY_DEBUG(("Device not connected to MQTT broker \n"));
+        return CY_RSLT_AWS_ERROR_DISCONNECT_FAILED;
+    }
+
     AWS_LIBRARY_DEBUG(("Send MQTT dis-connect frame \n"));
     rc = mqtt_obj->disconnect();
     if (rc != 0) {
@@ -233,15 +241,9 @@ cy_rslt_t AWSIoTClient::unsubscribe( AWSIoTEndpoint* ep, char* topic )
     return CY_RSLT_SUCCESS;
 }
 
-/** A call to this API must be made within the keepAlive interval to keep the MQTT connection alive
- *  yield can be called if no other MQTT operation is needed.  This will also allow messages to be
- *  received.
- *  @param timeout_ms the time to wait, in milliseconds
- *  @return success code - on failure, this means the client has disconnected
- */
 cy_rslt_t AWSIoTClient::yield(unsigned long timeout_ms)
 {
-    int rc = -1;
+    int rc = 0;
 
     if ( timeout_ms < THRESHOLD_YIELD_TIMEOUT )
     {
@@ -250,12 +252,28 @@ cy_rslt_t AWSIoTClient::yield(unsigned long timeout_ms)
     }
 
     rc = mqtt_obj->yield( timeout_ms );
-    if(rc != 0)
+    if( rc == -1 )
     {
-        return CY_RSLT_AWS_ERROR_INVALID_YIELD_TIMEOUT;
-    }
+        /* Send disconnect frame to broker */
+        mqtt_obj->disconnect();
 
-    return CY_RSLT_SUCCESS;
+        delete mqtt_obj;
+        mqtt_obj = NULL;
+        mqttnetwork->disconnect();
+
+        delete mqttnetwork;
+        mqttnetwork = NULL;
+
+        return CY_RSLT_AWS_ERROR_DISCONNECTED;
+    }
+    else if( rc == -2 )
+    {
+    	return CY_RSLT_AWS_ERROR_BUFFER_OVERFLOW;
+    }
+    else
+    {
+    	return CY_RSLT_SUCCESS;
+    }
 }
 
 void dump_response(HttpResponse* res)

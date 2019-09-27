@@ -68,6 +68,14 @@ extern "C" {
 #define AWS_LIBRARY_DEBUG( x )  //printf x
 #define AWS_LIBRARY_ERROR( x )  //printf x
 
+/**
+ * @addtogroup aws_iot_enums
+ *
+ * AWS IoT and Greengrass enumerated data types
+ *
+ * @{
+ */
+        
 /******************************************************
  *                    Constants
  ******************************************************/
@@ -82,7 +90,6 @@ extern "C" {
 /**
  * List of AWS IoT protocols
  */
-
 typedef enum
 {
     AWS_TRANSPORT_MQTT_NATIVE = 0,        /**< MQTT-native i.e. MQTT over TCP sockets */
@@ -103,19 +110,14 @@ typedef enum
 } aws_iot_qos_level_t;
 
 /**
- * List of AWS events
+ * @}
  */
-typedef enum
-{
-    AWS_EVENT_CONNECTED,                  /**< The connection has been accepted by remote */
-    AWS_EVENT_DISCONNECTED,               /**< Disconnection received from peer or some other network failure */
-    AWS_EVENT_PUBLISHED ,                 /**< Publication event; Either accepted by remote( received an acknowledgment ) or timed-out */
-    AWS_EVENT_SUBSCRIBED,                 /**< Subscription event; Either acknowledged by remote or timed-out */
-    AWS_EVENT_UNSUBSCRIBED,               /**< Unsubscription event; acknowledged by remote or timed-out */
-    AWS_EVENT_PAYLOAD_RECEIVED,           /**< Data received event */
-} aws_iot_event_type_t;
 
-
+/**
+ * @addtogroup aws_iot_struct
+ *
+ * @{
+ */
  /******************************************************
  *                    Structures
  ******************************************************/
@@ -135,8 +137,8 @@ typedef struct
  */
 typedef struct
 {
-    aws_greengrass_core_connection_info_t info;
-    cy_linked_list_node_t                 node;
+    aws_greengrass_core_connection_info_t info;    /**< Connection information of Greengrass core device */
+    cy_linked_list_node_t                 node;    /**< Current Greengrass core connection node */
 } aws_greengrass_core_connection_t;
 
 /**
@@ -150,7 +152,7 @@ typedef struct
     char*            thing_arn;              /**< Amazon resource name of the'Core' device of this Group */
     char*            root_ca_certificate;    /**< Root CA certificate for this 'Core' */
     uint16_t         root_ca_length;         /**< Length of the certificate */
-    cy_linked_list_t connections;            /**< A linked-list to store all Connection endpoints( @ref wiced_aws_greengrass_core_connection_t ) available for this core.For example: A core can have multiple network Interfaces. */
+    cy_linked_list_t connections;            /**< A linked-list to store all Connection endpoints( @ref aws_greengrass_core_connection_t ) available for this core.For example: A core can have multiple network Interfaces. */
 } aws_greengrass_core_info_t;
 
 /**
@@ -159,24 +161,21 @@ typedef struct
 
 typedef struct
 {
-    aws_greengrass_core_info_t  info;
-    cy_linked_list_node_t       node;
+    aws_greengrass_core_info_t  info;        /**< Greengrass core info */
+    cy_linked_list_node_t       node;        /**< Greengrass core node */
 } aws_greengrass_core_t;
 
 /** @} */
 
 /**
- * @addtogroup wiced_aws Greengrass
  *
- * Wiced Amazon Web services library - A one-stop library for communicating with AWS services( AWS IoT or AWS Greengrass ).
- *
+ * Greengrass Discovery Payload architecture
+ * =========================================
  * Discovery callback returns a list of all Groups the thing is part of along with Connection Informations of the cores of these groups.
  * Application upon receiving this information can select which group/core it wants to connect to.
  *
  * Note that each Greengrass group can have only one Greengrass core.
  * However, each greengrass core can have one or more Connections endpoints.
- *                             Greengrass Discovery Payload architecture
- *                             =========================================
  *
  *
  *
@@ -198,72 +197,41 @@ typedef struct
  *                                                   |          |           |        |    |      |          |           |        |    |
  *                                                   +----------+-----------+--------+----+      +----------+-----------+--------+----+
  *
+ */
+/**
+ * @addtogroup aws_iot_struct
  *  @{
  */
 
+/**
+ * List of greengrass groups
+ */
 typedef struct
 {
-    cy_linked_list_t* groups;
+    cy_linked_list_t* groups;                    /**< Greengrass group list */
 } aws_greengrass_discovery_callback_data_t;
 
-typedef struct
-{
-    cy_rslt_t status;
-} aws_iot_callback_connection_data_t;
 
-typedef struct
-{
-    cy_rslt_t status;
-} aws_iot_callback_disconnection_data_t;
-
-typedef struct
-{
-    cy_rslt_t status;
-} aws_iot_callback_publish_data_t;
-
-typedef struct
-{
-    cy_rslt_t status;
-} aws_iot_callback_subscribe_data_t;
-
-typedef struct
-{
-    cy_rslt_t status;
-} aws_iot_callback_unsubscribe_data_t;
-
-typedef struct
-{
-    cy_rslt_t    status;
-    uint8_t*     data;
-    uint32_t     data_length;
-    uint8_t*     topic;
-    uint32_t     topic_length;
-} aws_iot_callback_message_t;
-
-typedef union
-{
-    aws_iot_callback_connection_data_t    connection;
-    aws_iot_callback_disconnection_data_t disconnection;
-    aws_iot_callback_publish_data_t       publish;
-    aws_iot_callback_subscribe_data_t     subscribe;
-    aws_iot_callback_unsubscribe_data_t   unsubscribe;
-    aws_iot_callback_message_t            message;
-} wiced_aws_callback_data_t;
-
+/**
+ * AWS IoT connection parameters
+ */
 typedef struct aws_connect_params_s
 {
-    uint16_t    keep_alive;               /* Indicates keep alive interval to Broker */
-    uint8_t     clean_session;            /* Indicates if the session to be cleanly started */
-    uint8_t*    username;                 /* User name to connect to Broker */
-    uint8_t*    password;                 /* Password to connect to Broker */
-    uint8_t*    alpn_string;              /* If trying to connect with port 443 to AWS, It is mandatory to pass ALPN extension */
-    uint8_t*    peer_cn;
-    uint8_t*    client_id;                /* Application must pass the client ID information */
+    uint16_t    keep_alive;               /**< Indicates keep alive interval to Broker */
+    uint8_t     clean_session;            /**< Indicates if the session to be cleanly started */
+    uint8_t*    username;                 /**< User name to connect to Broker */
+    uint8_t*    password;                 /**< Password to connect to Broker */
+    uint8_t*    alpn_string;              /**< If trying to connect with port 443 to AWS, It is mandatory to pass ALPN extension */
+    uint8_t*    peer_cn;                  /**< Peer canonical name */
+    uint8_t*    client_id;                /**< Application must pass the client ID information */
 } aws_connect_params;
 
+/**
+ * AWS IoT Publish parameters
+ */
 typedef struct aws_publish_params_s
 {
-    aws_iot_qos_level_t QoS;
+    aws_iot_qos_level_t QoS;              /**< QOS level */
 } aws_publish_params;
 
 /******************************************************
@@ -273,7 +241,13 @@ typedef struct aws_publish_params_s
 /******************************************************
  *               Function Declarations
  ******************************************************/
+/** JSON parser callback for Greengrass discovery */
 cy_rslt_t json_callback_for_discovery_payload (cy_JSON_object_t* json_object );
+
+/**
+ * @}
+ */
+
 
 #ifdef __cplusplus
 } /*extern "C" */
