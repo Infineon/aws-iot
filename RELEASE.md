@@ -4,6 +4,12 @@
 Refer to the [README.md](./README.md) for a complete description of the AWS IoT library
 
 ## Changelog
+### v3.0.0
+* Simplified the APIs, especially for connect and disconnect
+* Updated doxygen documentation
+* Removed the usage of APIs that are deprecated in Mbed OS 5.15.0
+* Tested with ARMmbed OS 5.15.0
+
 ### v2.0.1
 * Added API reference guide
 * Tested with ARMmbed OS 5.14.0
@@ -20,8 +26,8 @@ This version of the bluetooth gateway Middleware was validated for compatibility
 
 | Software and Tools                                      | Version |
 | :---                                                    | :----:  |
-| GCC Compiler                                            | 7.2.1   |
+| GCC Compiler                                            | 9.2.1   |
 | IAR Compiler                                            | 8.32    |
-| ARM Compiler 6                                          | 6.11    |
-| MBED OS                                                 | >5.13.1 |
+| ARM Compiler 6                                          | 6.13    |
+| Mbed OS                                                 | 5.15.0  |
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Cypress Semiconductor Corporation
+ * Copyright 2019-2020 Cypress Semiconductor Corporation
  * SPDX-License-Identifier: Apache-2.0
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,7 +66,7 @@ extern "C" {
 
 #define AWS_LIBRARY_INFO( x )   printf x
 #define AWS_LIBRARY_DEBUG( x )  //printf x
-#define AWS_LIBRARY_ERROR( x )  //printf x
+#define AWS_LIBRARY_ERROR( x )  printf x
 
 /**
  * @addtogroup aws_iot_enums
@@ -93,7 +93,6 @@ extern "C" {
 typedef enum
 {
     AWS_TRANSPORT_MQTT_NATIVE = 0,        /**< MQTT-native i.e. MQTT over TCP sockets */
-    AWS_TRANSPORT_MQTT_WEBSOCKET,         /**< MQTT over Websockets */
     AWS_TRANSPORT_RESTFUL_HTTPS,          /**< AWS RESTful HTTPS APIs */
     AWS_TRANSPORT_INVALID,                /**< Invalid transport type */
 } aws_iot_transport_type_t;
@@ -105,7 +104,6 @@ typedef enum
 {
     AWS_QOS_ATMOST_ONCE    = 0x00,        /**< QoS level 0 */
     AWS_QOS_ATLEAST_ONCE   = 0x01,        /**< QoS level 1 */
-    AWS_QOS_EXACTLY_ONCE   = 0x02,        /**< QoS level 2 */
     AWS_QOS_INVALID        = 0x80,        /**< Invalid QoS level */
 } aws_iot_qos_level_t;
 
@@ -149,10 +147,10 @@ typedef struct
 typedef struct
 {
     char*            group_id;               /**< Group-ID */
-    char*            thing_arn;              /**< Amazon resource name of the'Core' device of this Group */
+    char*            thing_arn;              /**< Amazon resource name of the 'Core' device of this Group */
     char*            root_ca_certificate;    /**< Root CA certificate for this 'Core' */
     uint16_t         root_ca_length;         /**< Length of the certificate */
-    cy_linked_list_t connections;            /**< A linked-list to store all Connection endpoints( @ref aws_greengrass_core_connection_t ) available for this core.For example: A core can have multiple network Interfaces. */
+    cy_linked_list_t connections;            /**< A linked-list to store all connection endpoints( @ref aws_greengrass_core_connection_t ) available for this core. For example: A core can have multiple network Interfaces. */
 } aws_greengrass_core_info_t;
 
 /**
@@ -208,31 +206,49 @@ typedef struct
  */
 typedef struct
 {
-    cy_linked_list_t* groups;                    /**< Greengrass group list */
+    cy_linked_list_t* groups;                    /**< A linked list to Greengrass group. Each of the linked list node has information to Greengrass core ( @ref aws_greengrass_core_t ). */
+
 } aws_greengrass_discovery_callback_data_t;
 
 
 /**
  * AWS IoT connection parameters
  */
-typedef struct aws_connect_params_s
+typedef struct
 {
-    uint16_t    keep_alive;               /**< Indicates keep alive interval to Broker */
+    uint16_t    keep_alive;               /**< Is the maximum time interval that is permitted to elapse between the point at which the Client finishes
+                                               transmitting one Control Packet and the point it starts sending the next */
     uint8_t     clean_session;            /**< Indicates if the session to be cleanly started */
     uint8_t*    username;                 /**< User name to connect to Broker */
     uint8_t*    password;                 /**< Password to connect to Broker */
-    uint8_t*    alpn_string;              /**< If trying to connect with port 443 to AWS, It is mandatory to pass ALPN extension */
+    uint8_t*    alpn_string;              /**< Application-Layer Protocol Negotiation, is a TLS extension that includes the protocol negotiation
+                                               within the exchange of hello messages. If trying to connect with port 443 to AWS,
+                                               It is mandatory to pass ALPN extension */
     uint8_t*    peer_cn;                  /**< Peer canonical name */
     uint8_t*    client_id;                /**< Application must pass the client ID information */
-} aws_connect_params;
+} aws_connect_params_t;
+
+
+/**
+ * AWS IoT endpoint parameters
+ */
+typedef struct
+{
+	aws_iot_transport_type_t transport;   /**< AWS transport to be used */
+	char* uri;                            /**< URI of the AWS endpoint */
+	int port;                             /**< Port of AWS endpoint */
+	const char* root_ca;                  /**< Root CA certificate */
+	uint16_t root_ca_length;              /**< Length of Root CA certificate */
+} aws_endpoint_params_t;
+
 
 /**
  * AWS IoT Publish parameters
  */
-typedef struct aws_publish_params_s
+typedef struct
 {
-    aws_iot_qos_level_t QoS;              /**< QOS level */
-} aws_publish_params;
+    aws_iot_qos_level_t QoS;              /**< QoS level */
+} aws_publish_params_t;
 
 /******************************************************
  *                 Global Variables

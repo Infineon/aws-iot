@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['clean_5fsession',['clean_session',['../structaws__connect__params.html#a112f52b10d74fc00cb3b6123f9f8b4e7',1,'aws_connect_params']]],
-  ['client_5fid',['client_id',['../structaws__connect__params.html#adfa214dd5873af1b6bb34f47a869bd22',1,'aws_connect_params']]],
-  ['connect',['connect',['../class_a_w_s_io_t_client.html#ac302fab777df825aa1e5efd8afece19a',1,'AWSIoTClient']]],
+  ['clean_5fsession',['clean_session',['../structaws__connect__params__t.html#ac6a3e29fa89ecbb86af06ed5e400af3b',1,'aws_connect_params_t']]],
+  ['client_5fid',['client_id',['../structaws__connect__params__t.html#a6bb534b1b7efda71512fefbcacd5ce17',1,'aws_connect_params_t']]],
+  ['connect',['connect',['../class_a_w_s_io_t_client.html#a376345735407abec8d28bce7ec3874b3',1,'AWSIoTClient']]],
   ['connections',['connections',['../structaws__greengrass__core__info__t.html#a6c9be2019fe87e1af8a1d0fd18afeb85',1,'aws_greengrass_core_info_t']]],
-  ['create_5fendpoint',['create_endpoint',['../class_a_w_s_io_t_client.html#a263805d9ce4af10b4405cbb0c43780a8',1,'AWSIoTClient']]],
   ['cy_5frslt_5faws_5ferr_5fbase',['CY_RSLT_AWS_ERR_BASE',['../group__aws__iot__defines.html#ga8493d3987d7884b6470edb8b8e837c6e',1,'aws_error.h']]],
   ['cy_5frslt_5faws_5ferror_5fbuffer_5foverflow',['CY_RSLT_AWS_ERROR_BUFFER_OVERFLOW',['../group__aws__iot__defines.html#ga396d7c16ed5275dffbc552bb44372af3',1,'aws_error.h']]],
   ['cy_5frslt_5faws_5ferror_5fconnect_5ffailed',['CY_RSLT_AWS_ERROR_CONNECT_FAILED',['../group__aws__iot__defines.html#ga3039f41e3bd2f2258c1be84383618827',1,'aws_error.h']]],

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Cypress Semiconductor Corporation
+ * Copyright 2019-2020 Cypress Semiconductor Corporation
  * SPDX-License-Identifier: Apache-2.0
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -184,40 +184,56 @@ public:
         }
         return socket->set_client_cert_key(client_cert, client_key);
     }
+
     int connect(const char* hostname, int port, const char* peer_cn) {
 
         if (is_security_enabled == SECURED_MQTT) {
             TLSSocket *socket;
-            int r;
+            nsapi_error_t rc = NSAPI_ERROR_OK;
 
             socket = (TLSSocket *) socket_context;
 
-            r = socket->open(network);
-            if (r != 0) {
+            rc = socket->open(network);
+            if (rc != NSAPI_ERROR_OK) {
                 MQTT_NETWORK_ERROR(
                         ("[MQTT ERROR] : TLS SOCKET OPEN FAILED\r\n"));
+               return ((int)rc);
             }
 
             MQTT_NETWORK_DEBUG(("[MQTT INFO] : hostname set : %s \n", peer_cn ));
             socket->set_hostname(peer_cn);
 
-            network->gethostbyname(hostname, &address, NSAPI_UNSPEC, NULL);
+            rc = network->gethostbyname(hostname, &address, NSAPI_UNSPEC, NULL);
+            if (rc != NSAPI_ERROR_OK) {
+                MQTT_NETWORK_ERROR(
+                        ("[MQTT ERROR] : GET HOST BY NAME FAILED\r\n"));
+                return ((int)rc);
+            }
             address.set_port(port);
 
             return socket->connect(address);
 
         } else {
             TCPSocket *socket;
-            int r;
+            nsapi_error_t rc = NSAPI_ERROR_OK;
             socket = (TCPSocket *) socket_context;
 
-            r = socket->open(network);
-            if (r != 0) {
+            rc = socket->open(network);
+            if (rc != NSAPI_ERROR_OK) {
                 MQTT_NETWORK_ERROR(
                         ("[MQTT ERROR] :  TCP SOCKET OPEN FAILED\r\n"));
+                return ((int)rc);
             }
 
-            return socket->connect(hostname, port);
+            rc = network->gethostbyname(hostname, &address, NSAPI_UNSPEC, NULL);
+            if (rc != NSAPI_ERROR_OK) {
+                MQTT_NETWORK_ERROR(
+                        ("[MQTT ERROR] : GET HOST BY NAME FAILED\r\n"));
+                return ((int)rc);
+            }
+            address.set_port(port);
+
+            return socket->connect(address);
         }
 
     }

@@ -23,17 +23,24 @@ var group__aws__iot__struct =
     [ "aws_greengrass_discovery_callback_data_t", "structaws__greengrass__discovery__callback__data__t.html", [
       [ "groups", "structaws__greengrass__discovery__callback__data__t.html#a7c10c271c508a49580cee2e054611a24", null ]
     ] ],
-    [ "aws_connect_params", "structaws__connect__params.html", [
-      [ "keep_alive", "structaws__connect__params.html#a477a207da8f62d4d7c54945ed4e92e34", null ],
-      [ "clean_session", "structaws__connect__params.html#a112f52b10d74fc00cb3b6123f9f8b4e7", null ],
-      [ "username", "structaws__connect__params.html#ac8efd5acc8ceff3e16b76aea62eb4c7c", null ],
-      [ "password", "structaws__connect__params.html#a0558fdeada5054bbb808e67fd5fe1035", null ],
-      [ "alpn_string", "structaws__connect__params.html#a44877bd21ec6ac7b5e97b4f6fab0a733", null ],
-      [ "peer_cn", "structaws__connect__params.html#abccf7239e07525f38d8fc307ba1a144d", null ],
-      [ "client_id", "structaws__connect__params.html#adfa214dd5873af1b6bb34f47a869bd22", null ]
+    [ "aws_connect_params_t", "structaws__connect__params__t.html", [
+      [ "keep_alive", "structaws__connect__params__t.html#a242ecaf8da264c4193538dece914016b", null ],
+      [ "clean_session", "structaws__connect__params__t.html#ac6a3e29fa89ecbb86af06ed5e400af3b", null ],
+      [ "username", "structaws__connect__params__t.html#a2e5f77e8aa4aefff0844d4cee587d1b3", null ],
+      [ "password", "structaws__connect__params__t.html#ab96fab1f4e7d88a57b4350bffc407672", null ],
+      [ "alpn_string", "structaws__connect__params__t.html#a96f34d1c617994b65d66ec741b86c6ee", null ],
+      [ "peer_cn", "structaws__connect__params__t.html#aeb9e9f5edd1362d0210654c2a3777693", null ],
+      [ "client_id", "structaws__connect__params__t.html#a6bb534b1b7efda71512fefbcacd5ce17", null ]
     ] ],
-    [ "aws_publish_params", "structaws__publish__params.html", [
-      [ "QoS", "structaws__publish__params.html#aaa844dc77e2231f446f7a222a610e4ef", null ]
+    [ "aws_endpoint_params_t", "structaws__endpoint__params__t.html", [
+      [ "transport", "structaws__endpoint__params__t.html#a4ec4255960b0610cd963e83c8dcc4ddb", null ],
+      [ "uri", "structaws__endpoint__params__t.html#a7192eb34f7210bbe4af631f82fb9e7f3", null ],
+      [ "port", "structaws__endpoint__params__t.html#adcd1df0161ba03651c8c315d1fa1403b", null ],
+      [ "root_ca", "structaws__endpoint__params__t.html#aab52800e9df8b9744bbbd1042ca237e0", null ],
+      [ "root_ca_length", "structaws__endpoint__params__t.html#a6eec3f00410a4d8d913cdc0aeac15fad", null ]
+    ] ],
+    [ "aws_publish_params_t", "structaws__publish__params__t.html", [
+      [ "QoS", "structaws__publish__params__t.html#ac9e29e82deec2aa0b08b0e0d12826f02", null ]
     ] ],
     [ "aws_iot_message_t", "group__aws__iot__struct.html#gaebfbf3e87bbec28bd3fb4e82e706ebe4", null ],
     [ "aws_message_t", "group__aws__iot__struct.html#gad2c1e988e47bdee8dfef2648c66d9a54", null ],

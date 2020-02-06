@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Cypress Semiconductor Corporation
+ * Copyright 2019-2020 Cypress Semiconductor Corporation
  * SPDX-License-Identifier: Apache-2.0
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@
 #include "cy_result_mw.h"
 
 /**
- * @defgroup aws_iot_defines AWS IoT preprocessor directives
+ * @defgroup aws_iot_defines AWS IoT library error codes
  * @ingroup aws_iot
  *
  * AWS IoT and Greengrass preprocessor directives such as results and error codes
@@ -44,7 +44,7 @@
    Refer to the macro section of this document for library specific error codes.
    \endverbatim
  *
- * The data structure cy_rslt_t is part of cy_result.h in MBED OS PSoC6 target platform, located in <mbed-os/targets/TARGET_Cypress/TARGET_PSOC6/psoc6csp/core_lib/include>
+ * The data structure cy_rslt_t is part of cy_result.h in Mbed OS PSoC6 target platform, located in <mbed-os/targets/TARGET_Cypress/TARGET_PSOC6/psoc6csp/core_lib/include>
  *
  * Module base: This base is derived from CY_RSLT_MODULE_MIDDLEWARE_BASE (defined in cy_result.h) and is an offset of the CY_RSLT_MODULE_MIDDLEWARE_BASE
  *              The details of the offset and the middleware base are defined in cy_result_mw.h, that is part of [Github connectivity-utilities] (https://github.com/cypresssemiconductorco/connectivity-utilities)
@@ -67,7 +67,7 @@
 /** Connection to MQTT broker failed */
 #define CY_RSLT_AWS_ERROR_CONNECT_FAILED            (cy_rslt_t)(CY_RSLT_AWS_ERR_BASE + 1)
 
-/** Loading RootCA certificate failed */
+/** Loading Root CA certificate failed */
 #define CY_RSLT_AWS_ERROR_INVALID_ROOTCA            (cy_rslt_t)(CY_RSLT_AWS_ERR_BASE + 2)
 
 /** Loading client private key failed  */

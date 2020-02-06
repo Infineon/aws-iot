@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Cypress AWS IoT", "index.html", [
+  [ "Cypress AWS IoT Library", "index.html", [
     [ "Overview", "index.html", null ],
     [ "API Reference", "modules.html", "modules" ]
   ] ]

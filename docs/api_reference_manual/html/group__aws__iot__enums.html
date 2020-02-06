@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cypress AWS IoT: AWS IoT and Greengrass enumerated types</title>
+<title>Cypress AWS IoT Library: AWS IoT and Greengrass enumerated types</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><a href="http://www.cypress.com/"><img alt="Logo" src="cypress_logo.png"/></a></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Cypress AWS IoT</div>
+   <div id="projectname">Cypress AWS IoT Library</div>
   </td>
  </tr>
  </tbody>
@@ -94,8 +94,6 @@ Enumerations</h2></td></tr>
 <tr class="memitem:gabaed60616f9255ef2fbe18b69ae03e4d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aws__iot__enums.html#gabaed60616f9255ef2fbe18b69ae03e4d">aws_iot_transport_type_t</a> { <br />
 &#160;&#160;<a class="el" href="group__aws__iot__enums.html#ggabaed60616f9255ef2fbe18b69ae03e4da5f1df290eefcf5665b322c7c2dd85702">AWS_TRANSPORT_MQTT_NATIVE</a> = 0, 
 <br />
-&#160;&#160;<a class="el" href="group__aws__iot__enums.html#ggabaed60616f9255ef2fbe18b69ae03e4daa70da0d4d4f1105d392ecb10900a9a2b">AWS_TRANSPORT_MQTT_WEBSOCKET</a>, 
-<br />
 &#160;&#160;<a class="el" href="group__aws__iot__enums.html#ggabaed60616f9255ef2fbe18b69ae03e4dadfbbf5f4c5cdfa16ec4c1b5b664f3cdc">AWS_TRANSPORT_RESTFUL_HTTPS</a>, 
 <br />
 &#160;&#160;<a class="el" href="group__aws__iot__enums.html#ggabaed60616f9255ef2fbe18b69ae03e4da5082675a4cca9aed508c927d772d7974">AWS_TRANSPORT_INVALID</a>
@@ -107,8 +105,6 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="group__aws__iot__enums.html#gga4166e6ed6124984ef6561360c2ba8bdaade0cec88af01d008d77dc7f6991e5dce">AWS_QOS_ATMOST_ONCE</a> = 0x00, 
 <br />
 &#160;&#160;<a class="el" href="group__aws__iot__enums.html#gga4166e6ed6124984ef6561360c2ba8bdaa8657edc26b62c643fa2be703e227b0a2">AWS_QOS_ATLEAST_ONCE</a> = 0x01, 
-<br />
-&#160;&#160;<a class="el" href="group__aws__iot__enums.html#gga4166e6ed6124984ef6561360c2ba8bdaa0ee38143c9c8536eb9f2b62ea1d37ca6">AWS_QOS_EXACTLY_ONCE</a> = 0x02, 
 <br />
 &#160;&#160;<a class="el" href="group__aws__iot__enums.html#gga4166e6ed6124984ef6561360c2ba8bdaaa7ac1e0625bbd22ad3c38be2b9460faa">AWS_QOS_INVALID</a> = 0x80
 <br />
@@ -133,8 +129,6 @@ Enumerations</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggabaed60616f9255ef2fbe18b69ae03e4da5f1df290eefcf5665b322c7c2dd85702"></a>AWS_TRANSPORT_MQTT_NATIVE&#160;</td><td class="fielddoc"><p>MQTT-native i.e. </p>
 <p>MQTT over TCP sockets </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ggabaed60616f9255ef2fbe18b69ae03e4daa70da0d4d4f1105d392ecb10900a9a2b"></a>AWS_TRANSPORT_MQTT_WEBSOCKET&#160;</td><td class="fielddoc"><p>MQTT over Websockets. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ggabaed60616f9255ef2fbe18b69ae03e4dadfbbf5f4c5cdfa16ec4c1b5b664f3cdc"></a>AWS_TRANSPORT_RESTFUL_HTTPS&#160;</td><td class="fielddoc"><p>AWS RESTful HTTPS APIs. </p>
 </td></tr>
@@ -162,8 +156,6 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4166e6ed6124984ef6561360c2ba8bdaa8657edc26b62c643fa2be703e227b0a2"></a>AWS_QOS_ATLEAST_ONCE&#160;</td><td class="fielddoc"><p>QoS level 1. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga4166e6ed6124984ef6561360c2ba8bdaa0ee38143c9c8536eb9f2b62ea1d37ca6"></a>AWS_QOS_EXACTLY_ONCE&#160;</td><td class="fielddoc"><p>QoS level 2. </p>
-</td></tr>
 <tr><td class="fieldname"><a id="gga4166e6ed6124984ef6561360c2ba8bdaaa7ac1e0625bbd22ad3c38be2b9460faa"></a>AWS_QOS_INVALID&#160;</td><td class="fielddoc"><p>Invalid QoS level. </p>
 </td></tr>
 </table>
@@ -176,7 +168,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath">
     <ul>
         <li class="footer">
-            Generated for <b>Cypress AWS IoT</b> by <b>Cypress Semiconductor Corporation</b>.
+            Generated for <b>Cypress AWS IoT Library</b> by <b>Cypress Semiconductor Corporation</b>.
             All rights reserved.
         </li>
     </ul>

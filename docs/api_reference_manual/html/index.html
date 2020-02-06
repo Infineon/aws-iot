@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cypress AWS IoT: Overview</title>
+<title>Cypress AWS IoT Library: Overview</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><a href="http://www.cypress.com/"><img alt="Logo" src="cypress_logo.png"/></a></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Cypress AWS IoT</div>
+   <div id="projectname">Cypress AWS IoT Library</div>
   </td>
  </tr>
  </tbody>
@@ -84,16 +84,41 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">Overview </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>AWS IoT provides secure, bi-directional communication between Internet-connected devices such as sensors, actuators, embedded micro-controllers, or smart appliances and the AWS Cloud.AWS Greengrass is software that extends AWS cloud capabilities to local devices(typically Edge or Gateway devices), making it possible for them to collect and analyze data closer to the source of information (Nodes, CY IoT Devices, Amazon FreeRTOS devices). With AWS Greengrass, devices securely communicate on a local network and exchange messages with each other without having to connect to the cloud. AWS Greengrass provides a local pub/sub message manager that can intelligently buffer messages if connectivity is lost so that inbound and outbound messages to the cloud are preserved.</p>
-<p>This library provides application developers an easy-to-use, unified interface for quickly enabling AWS communication in their applications. The library provides a single interface to communicate with AWS using different protocols.</p>
-<p>The library provides a single interface to communicate with AWS using different protocols. Currently, only MQTT ( using Client Certificates ) is supported. HTTP is used for Greengrass core discovery. See <a href="https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html">https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html</a> for more details. </p>
+<div class="textblock"><p>Cypress AWS IoT library provides easy-to-use APIs for users to connect to AWS IoT cloud and perform MQTT publish and subscribe operations. The MQTT publish and subscribe operations can be performed either through AWS IoT cloud or through Greengrass core. The APIs provided in this library helps user to discover Greengrass core devices that are on the local area network, and allow them to exchange messages on the local area network without having to connect to the AWS IoT cloud.</p>
+<p>This library provides following features:</p><ul>
+<li>Single interface to communicate with AWS using different protocols:<ul>
+<li>MQTT over TCP sockets (using Client Certificates)</li>
+<li>HTTP for Greengrass core discovery <br />
+ NOTE: MQTT over Websockets and RESTful HTTPS are not supported currently</li>
+</ul>
+</li>
+<li>Supports Quality of Service (QoS) levels 0 and 1</li>
+</ul>
+<p>User can implement a AWS subscriber/publisher application by using the APIs provided in this library. To communicate with AWS IoT message broker, user should have a 'Thing', 'Policies', 'certificates' and unique client IDs for each AWS client instance. Refer to the section below for AWS IoT terminology.</p>
+<h1><a class="anchor" id="sec_term"></a>
+AWS IoT terminology</h1>
+<ul>
+<li><b>Thing :</b> A thing is a representation of a specific device or logical entity. It can be a physical device or sensor (for example, a light bulb or a switch on a wall). Things are identified by a name. Things can also have attributes, which are name-value pairs that can be used to store information about the thing, such as its serial number or manufacturer.</li>
+<li><b>Client ID :</b> The Client Identifier (ClientID) identifies the Client to the Server. Each Client connecting to the Server has a unique ClientID. The ClientID MUST be used by Clients and by Servers to identify state that they hold relating to this MQTT Session between the Client and the Server.</li>
+<li><b>Thing and Client ID association:</b> A typical device use case involves the use of the thing name as the default MQTT client ID. Although AWS does not enforce a mapping between a things registry name and its use of MQTT client IDs, certificates, or shadow state, they recommend that a thing name be used as the MQTT client ID for both the registry and the Device Shadow service. This provides organization and convenience without removing the flexibility of the underlying device certificate model or shadows.</li>
+<li><b>Policies :</b> AWS IoT policies are JSON documents. They follow the same conventions as IAM policies. AWS IoT policies allow you to control access to the AWS IoT data plane. The AWS IoT data plane consists of operations that allow you to connect to the AWS IoT message broker, send and receive MQTT messages, and get or update a device's shadow.</li>
+<li><b>Security and certificates :</b> Each connected device or client must have a credential to interact with AWS IoT. All traffic to and from AWS IoT is sent securely over Transport Layer Security (TLS). AWS cloud security mechanisms protect data as it moves between AWS IoT and other AWS services. Authentication is a mechanism where you verify the identity of a client (such as AWS IoT device) or a server (AWS IoT cloud). Server authentication is the process where devices or other clients ensure they are communicating with an actual AWS IoT endpoint. Client authentication is the process where devices or other clients authenticate themselves with AWS IoT. Certificates are used during the authentication process to validate the identify of the client and server. X.509 certificates are the digital certificates that are used by the client during AWS IoT authentication. The AWS IoT root CA certificate allows the devices to verify that they are communicating with AWS IoT Core and not another server impersonating AWS IoT Core. Refer to the following section in AWS documentation on Authentication and Key management: <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authentication.html">https://docs.aws.amazon.com/iot/latest/developerguide/authentication.html</a></li>
+</ul>
+<h1><a class="anchor" id="sec_add_info"></a>
+Additional resources</h1>
+<ul>
+<li><b>AWS IoT :</b> <a href="https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html">https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html</a></li>
+<li><b>Greengrass :</b> <a href="https://docs.aws.amazon.com/greengrass/latest/developerguide/what-is-gg.html">https://docs.aws.amazon.com/greengrass/latest/developerguide/what-is-gg.html</a></li>
+<li><b>Authentication :</b> <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authentication.html">https://docs.aws.amazon.com/iot/latest/developerguide/authentication.html</a></li>
+<li><b>MQTT Protocol :</b> <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html">http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html</a> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath">
     <ul>
         <li class="footer">
-            Generated for <b>Cypress AWS IoT</b> by <b>Cypress Semiconductor Corporation</b>.
+            Generated for <b>Cypress AWS IoT Library</b> by <b>Cypress Semiconductor Corporation</b>.
             All rights reserved.
         </li>
     </ul>

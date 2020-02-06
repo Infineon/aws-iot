@@ -9,7 +9,7 @@ This library provides application developers an easy-to-use, unified interface f
 
 This repository contains the AWS IoT client library code. AWS code examples download this library automatically, so you don't need to. 
 
-AWS code examples, for both AWS IoT client and Greengrass nodes, are available for mbed-os.
+AWS code examples, for both AWS IoT client and Greengrass nodes, are available for Mbed OS.
 
 Note: Applications that need Greengrass support, should ensure that adequate heap memory (at least 8KB) is available for HTTP client library on memory constrained platforms (such as CY8CKIT_062_WIFI_BT)
 
@@ -17,7 +17,7 @@ Note: Applications that need Greengrass support, should ensure that adequate hea
 * Supports AWS IoT client APIs to connect, publish and subscribe to topics on the AWS IoT cloud
 * Supports AWS Greengrass core discovery and connection to Greengrass cores
 * Built on top of Eclipse PAHO MQTT client library
-* Designed to work with Cypress' PSoC platforms running ARM mbed-os 5.13.1 release or greater
+* Designed to work with Cypress' PSoC platforms running ARM Mbed OS 5.15.0
 
 ## Supported platforms
 This middleware library and it's features are supported on following Cypress platforms:
@@ -27,10 +27,10 @@ This middleware library and it's features are supported on following Cypress pla
 
 ## Dependencies
 This section provides the list of dependency libraries required for this middleware library to work.
-* [ARM mbed-os stack version 5.13.1 and above](https://os.mbed.com/mbed-os/releases)
+* [ARM Mbed OS stack version 5.15.0](https://os.mbed.com/mbed-os/releases)
 * [Cypress Connectivity Utilities Library](https://github.com/cypresssemiconductorco/connectivity-utilities)
 
 ## Additional Information
 * [AWS IoT RELEASE.md](./RELEASE.md)
-* [AWS IoT API reference guide](./docs/api_reference_manual.html)
+* [AWS IoT API reference guide](https://cypresssemiconductorco.github.io/aws-iot/api_reference_manual/html/index.html)
 * [AWS IoT version](./version.txt)

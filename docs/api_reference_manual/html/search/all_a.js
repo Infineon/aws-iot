@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['password',['password',['../structaws__connect__params.html#a0558fdeada5054bbb808e67fd5fe1035',1,'aws_connect_params']]],
-  ['peer_5fcn',['peer_cn',['../structaws__connect__params.html#abccf7239e07525f38d8fc307ba1a144d',1,'aws_connect_params']]],
-  ['port',['port',['../structaws__greengrass__core__connection__info__t.html#ac384877b6199dec6bfe56d0259324e08',1,'aws_greengrass_core_connection_info_t']]],
-  ['publish',['publish',['../class_a_w_s_io_t_client.html#ab4494efc5637cac590016e0206ba07f4',1,'AWSIoTClient']]]
+  ['password',['password',['../structaws__connect__params__t.html#ab96fab1f4e7d88a57b4350bffc407672',1,'aws_connect_params_t']]],
+  ['peer_5fcn',['peer_cn',['../structaws__connect__params__t.html#aeb9e9f5edd1362d0210654c2a3777693',1,'aws_connect_params_t']]],
+  ['port',['port',['../structaws__greengrass__core__connection__info__t.html#ac384877b6199dec6bfe56d0259324e08',1,'aws_greengrass_core_connection_info_t::port()'],['../structaws__endpoint__params__t.html#adcd1df0161ba03651c8c315d1fa1403b',1,'aws_endpoint_params_t::port()']]],
+  ['publish',['publish',['../class_a_w_s_io_t_client.html#a080dd29377528f0a1d20574872000dca',1,'AWSIoTClient']]]
 ];

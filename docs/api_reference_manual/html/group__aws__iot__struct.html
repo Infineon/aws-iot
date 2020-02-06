@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cypress AWS IoT: AWS IoT and Greengrass data structures</title>
+<title>Cypress AWS IoT Library: AWS IoT and Greengrass data structures</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><a href="http://www.cypress.com/"><img alt="Logo" src="cypress_logo.png"/></a></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Cypress AWS IoT</div>
+   <div id="projectname">Cypress AWS IoT Library</div>
   </td>
  </tr>
  </tbody>
@@ -128,11 +128,14 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaws__greengrass__discovery__callback__data__t.html">aws_greengrass_discovery_callback_data_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of greengrass groups.  <a href="structaws__greengrass__discovery__callback__data__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaws__connect__params.html">aws_connect_params</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT connection parameters.  <a href="structaws__connect__params.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaws__connect__params__t.html">aws_connect_params_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT connection parameters.  <a href="structaws__connect__params__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaws__publish__params.html">aws_publish_params</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT Publish parameters.  <a href="structaws__publish__params.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaws__endpoint__params__t.html">aws_endpoint_params_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT endpoint parameters.  <a href="structaws__endpoint__params__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaws__publish__params__t.html">aws_publish_params_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT Publish parameters.  <a href="structaws__publish__params__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -143,11 +146,13 @@ Typedefs</h2></td></tr>
 <tr class="memitem:gad2c1e988e47bdee8dfef2648c66d9a54"><td class="memItemLeft" align="right" valign="top">typedef struct MQTT::Message&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aws__iot__struct.html#gad2c1e988e47bdee8dfef2648c66d9a54">aws_message_t</a></td></tr>
 <tr class="memdesc:gad2c1e988e47bdee8dfef2648c66d9a54"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT message structure using Eclipse MQTTClient MQTT::Message.  <a href="#gad2c1e988e47bdee8dfef2648c66d9a54">More...</a><br /></td></tr>
 <tr class="separator:gad2c1e988e47bdee8dfef2648c66d9a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac7568caafde99d4fbda2e9c44fa32ce3"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aws__iot__struct.html#gac7568caafde99d4fbda2e9c44fa32ce3">aws_greengrass_callback</a>) (<a class="el" href="structaws__greengrass__discovery__callback__data__t.html">aws_greengrass_discovery_callback_data_t</a> *cb_data)</td></tr>
-<tr class="memdesc:gac7568caafde99d4fbda2e9c44fa32ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS Greengrass discovery callback with callback data.  <a href="#gac7568caafde99d4fbda2e9c44fa32ce3">More...</a><br /></td></tr>
+<tr class="memitem:gac7568caafde99d4fbda2e9c44fa32ce3"><td class="memItemLeft" align="right" valign="top"><a id="gac7568caafde99d4fbda2e9c44fa32ce3"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aws__iot__struct.html#gac7568caafde99d4fbda2e9c44fa32ce3">aws_greengrass_callback</a>) (<a class="el" href="structaws__greengrass__discovery__callback__data__t.html">aws_greengrass_discovery_callback_data_t</a> *cb_data)</td></tr>
+<tr class="memdesc:gac7568caafde99d4fbda2e9c44fa32ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS Greengrass discovery callback that will be invoked in response to discover API (<a class="el" href="class_a_w_s_io_t_client.html#a81e2b45c25aab232faa9552e4f132dd6">AWSIoTClient::discover</a>) <br /></td></tr>
 <tr class="separator:gac7568caafde99d4fbda2e9c44fa32ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4509593ffd5cf5a75d6e0de00d0baf5f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aws__iot__struct.html#ga4509593ffd5cf5a75d6e0de00d0baf5f">subscriber_callback</a>) (<a class="el" href="group__aws__iot__struct.html#gaebfbf3e87bbec28bd3fb4e82e706ebe4">aws_iot_message_t</a> &amp;message)</td></tr>
-<tr class="memdesc:ga4509593ffd5cf5a75d6e0de00d0baf5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT client subscriber callback.  <a href="#ga4509593ffd5cf5a75d6e0de00d0baf5f">More...</a><br /></td></tr>
+<tr class="memitem:ga4509593ffd5cf5a75d6e0de00d0baf5f"><td class="memItemLeft" align="right" valign="top"><a id="ga4509593ffd5cf5a75d6e0de00d0baf5f"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__aws__iot__struct.html#ga4509593ffd5cf5a75d6e0de00d0baf5f">subscriber_callback</a>) (<a class="el" href="group__aws__iot__struct.html#gaebfbf3e87bbec28bd3fb4e82e706ebe4">aws_iot_message_t</a> &amp;message)</td></tr>
+<tr class="memdesc:ga4509593ffd5cf5a75d6e0de00d0baf5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">AWS IoT client subscriber callback that will be invoked whenever a message is received for the subscribed topic. <br /></td></tr>
 <tr class="separator:ga4509593ffd5cf5a75d6e0de00d0baf5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -194,47 +199,13 @@ cy_rslt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 
 </div>
 </div>
-<a id="gac7568caafde99d4fbda2e9c44fa32ce3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac7568caafde99d4fbda2e9c44fa32ce3">&#9670;&nbsp;</a></span>aws_greengrass_callback</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* aws_greengrass_callback) (<a class="el" href="structaws__greengrass__discovery__callback__data__t.html">aws_greengrass_discovery_callback_data_t</a> *cb_data)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>AWS Greengrass discovery callback with callback data. </p>
-<p>Will be invoked in response to discover API </p>
-
-</div>
-</div>
-<a id="ga4509593ffd5cf5a75d6e0de00d0baf5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4509593ffd5cf5a75d6e0de00d0baf5f">&#9670;&nbsp;</a></span>subscriber_callback</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* subscriber_callback) (<a class="el" href="group__aws__iot__struct.html#gaebfbf3e87bbec28bd3fb4e82e706ebe4">aws_iot_message_t</a> &amp;message)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>AWS IoT client subscriber callback. </p>
-<p>Will be invoked whenever a message is received for the subscribed topic. Data will be available as part of aws_iot_message_t </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath">
     <ul>
         <li class="footer">
-            Generated for <b>Cypress AWS IoT</b> by <b>Cypress Semiconductor Corporation</b>.
+            Generated for <b>Cypress AWS IoT Library</b> by <b>Cypress Semiconductor Corporation</b>.
             All rights reserved.
         </li>
     </ul>
